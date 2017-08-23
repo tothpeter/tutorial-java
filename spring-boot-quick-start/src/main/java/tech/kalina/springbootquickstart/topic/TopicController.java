@@ -16,31 +16,31 @@ public class TopicController {
 	private TopicService topicService;
 	
 	@RequestMapping("/topics")
-	public List<Topic> getAll() {
+	public List<Topic> index() {
 		return topicService.getAllTopics();
 	}
 	
 	
 	@RequestMapping("/topics/{id}")
-	public Topic getTopic(@PathVariable int id) {
+	public Topic show(@PathVariable int id) {
 		return topicService.getTopic(id);
 	}
 	
 	
 	@RequestMapping(method=RequestMethod.POST, value="/topics")
-	public Topic addTopic(@RequestBody Topic topic) {
+	public Topic create(@RequestBody Topic topic) {
 		topicService.addTopic(topic);
 		return topic;
 	}
 	
 	@RequestMapping(method=RequestMethod.PUT, value="/topics/{id}")
-	public Topic updateTopic(@RequestBody Topic topic, @PathVariable int id) {
+	public Topic update(@RequestBody Topic topic, @PathVariable int id) {
 		topicService.updateTopic(id, topic);
 		return topic;
 	}
 	
 	@RequestMapping(method=RequestMethod.DELETE, value="/topics/{id}")
-	public void updateTopic(@PathVariable int id) {
+	public void destroy(@PathVariable int id) {
 		topicService.deleteTopic(id);
 	}
 }
